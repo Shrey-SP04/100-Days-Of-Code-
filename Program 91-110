@@ -1,0 +1,1036 @@
+//Q91: Remove all vowels from a string.
+
+/*
+Sample Test Cases:
+Input 1:
+education
+Output 1:
+dctn
+
+*/
+#include <stdio.h>
+
+int main() {
+    char str[1000], result[1000];
+    int i = 0, j = 0;
+
+    // Input string
+    fgets(str, sizeof(str), stdin);
+
+    // Remove vowels
+    while (str[i] != '\0' && str[i] != '\n') {
+        char ch = str[i];
+        if (!(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+              ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')) {
+            result[j++] = ch;
+        }
+        i++;
+    }
+    result[j] = '\0'; // End the new string
+
+    // Print string without vowels
+    printf("%s\n", result);
+    return 0;
+}
+
+//Q92: Find the first repeating lowercase alphabet in a string.
+
+/*
+Sample Test Cases:
+Input 1:
+stress
+Output 1:
+s
+
+*/
+#include <stdio.h>
+
+int main() {
+    char str[1000];
+    int freq[26] = {0};  // to count frequency of each lowercase letter
+    int i = 0;
+    char first = '\0';
+
+    // Input string
+    fgets(str, sizeof(str), stdin);
+
+    // Find first repeating character
+    while (str[i] != '\0' && str[i] != '\n') {
+        char ch = str[i];
+        if (ch >= 'a' && ch <= 'z') {
+            freq[ch - 'a']++;
+            if (freq[ch - 'a'] == 2) {  // found repeating
+                first = ch;
+                break;
+            }
+        }
+        i++;
+    }
+
+    if (first != '\0')
+        printf("%c\n", first);
+    else
+        printf("-1\n");  // if no repeating character found
+
+    return 0;
+}
+
+//Q92: Find the first repeating lowercase alphabet in a string.
+
+/*
+Sample Test Cases:
+Input 1:
+stress
+Output 1:
+s
+
+*/
+#include <stdio.h>
+
+int main() {
+    char str[1000];
+    int freq[26] = {0};  // to count frequency of each lowercase letter
+    int i = 0;
+    char first = '\0';
+
+    // Input string
+    fgets(str, sizeof(str), stdin);
+
+    // Find first repeating character
+    while (str[i] != '\0' && str[i] != '\n') {
+        char ch = str[i];
+        if (ch >= 'a' && ch <= 'z') {
+            freq[ch - 'a']++;
+            if (freq[ch - 'a'] == 2) {  // found repeating
+                first = ch;
+                break;
+            }
+        }
+        i++;
+    }
+
+    if (first != '\0')
+        printf("%c\n", first);
+    else
+        printf("-1\n");  // if no repeating character found
+
+    return 0;
+}
+
+//Q92: Find the first repeating lowercase alphabet in a string.
+
+/*
+Sample Test Cases:
+Input 1:
+stress
+Output 1:
+s
+
+*/
+#include <stdio.h>
+
+int main() {
+    char str[1000];
+    int freq[26] = {0};  // to count frequency of each lowercase letter
+    int i = 0;
+    char first = '\0';
+
+    // Input string
+    fgets(str, sizeof(str), stdin);
+
+    // Find first repeating character
+    while (str[i] != '\0' && str[i] != '\n') {
+        char ch = str[i];
+        if (ch >= 'a' && ch <= 'z') {
+            freq[ch - 'a']++;
+            if (freq[ch - 'a'] == 2) {  // found repeating
+                first = ch;
+                break;
+            }
+        }
+        i++;
+    }
+
+    if (first != '\0')
+        printf("%c\n", first);
+    else
+        printf("-1\n");  // if no repeating character found
+
+    return 0;
+}
+
+//Q94: Find the longest word in a sentence.
+
+/*
+Sample Test Cases:
+Input 1:
+I love programming
+Output 1:
+programming
+
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[1000];
+    char word[1000], longest[1000];
+    int i = 0, j = 0, maxLen = 0, len = 0;
+
+    // Input sentence
+    fgets(str, sizeof(str), stdin);
+
+    while (1) {
+        if (str[i] != ' ' && str[i] != '\n' && str[i] != '\0') {
+            word[j++] = str[i];
+        } else {
+            word[j] = '\0';
+            len = strlen(word);
+            if (len > maxLen) {
+                maxLen = len;
+                strcpy(longest, word);
+            }
+            j = 0; // reset for next word
+            if (str[i] == '\0' || str[i] == '\n')
+                break;
+        }
+        i++;
+    }
+
+    printf("%s\n", longest);
+    return 0;
+}
+
+//Q95: Check if one string is a rotation of another.
+
+/*
+Sample Test Cases:
+Input 1:
+abcde
+deabc
+Output 1:
+Rotation
+
+Input 2:
+abc
+acb
+Output 2:
+Not rotation
+
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[1000], str2[1000], temp[2000];
+
+    // Input two strings
+    fgets(str1, sizeof(str1), stdin);
+    fgets(str2, sizeof(str2), stdin);
+
+    // Remove newline characters if present
+    str1[strcspn(str1, "\n")] = '\0';
+    str2[strcspn(str2, "\n")] = '\0';
+
+    // Check length first
+    if (strlen(str1) != strlen(str2)) {
+        printf("Not rotation\n");
+        return 0;
+    }
+
+    // Concatenate str1 with itself
+    strcpy(temp, str1);
+    strcat(temp, str1);
+
+    // Check if str2 is a substring of temp
+    if (strstr(temp, str2))
+        printf("Rotation\n");
+    else
+        printf("Not rotation\n");
+
+    return 0;
+}
+
+//Q96: Reverse each word in a sentence without changing the word order.
+
+/*
+Sample Test Cases:
+Input 1:
+I love coding
+Output 1:
+I evol gnidoc
+
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[1000];
+    int start = 0, end = 0, len;
+
+    // Input sentence
+    fgets(str, sizeof(str), stdin);
+    len = strlen(str);
+
+    // Remove newline character if present
+    if (str[len - 1] == '\n')
+        str[len - 1] = '\0';
+
+    len = strlen(str);
+
+    // Reverse each word in place
+    for (int i = 0; i <= len; i++) {
+        if (str[i] == ' ' || str[i] == '\0') {
+            end = i - 1;
+            // Reverse the word between start and end
+            while (start < end) {
+                char temp = str[start];
+                str[start] = str[end];
+                str[end] = temp;
+                start++;
+                end--;
+            }
+            start = i + 1; // move to the next word
+        }
+    }
+
+    printf("%s\n", str);
+    return 0;
+}
+
+//Q97: Print the initials of a name.
+
+/*
+Sample Test Cases:
+Input 1:
+John Doe
+Output 1:
+J.D.
+
+*/
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char str[1000];
+    int i = 0;
+
+    // Input full name
+    fgets(str, sizeof(str), stdin);
+
+    // Print first initial
+    if (str[0] != ' ' && str[0] != '\n')
+        printf("%c.", toupper(str[0]));
+
+    // Loop through string to find spaces
+    while (str[i] != '\0' && str[i] != '\n') {
+        if (str[i] == ' ' && str[i + 1] != ' ' && str[i + 1] != '\0' && str[i + 1] != '\n')
+            printf("%c.", toupper(str[i + 1]));
+        i++;
+    }
+
+    printf("\n");
+    return 0;
+}
+
+//Q98: Print initials of a name with the surname displayed in full.
+
+/*
+Sample Test Cases:
+Input 1:
+John David Doe
+Output 1:
+J.D. Doe
+
+*/
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char str[1000];
+    int len, i = 0, lastSpace = -1;
+
+    // Input full name
+    fgets(str, sizeof(str), stdin);
+
+    // Remove newline if present
+    len = strlen(str);
+    if (str[len - 1] == '\n')
+        str[len - 1] = '\0';
+
+    len = strlen(str);
+
+    // Find the last space (before surname)
+    for (i = 0; i < len; i++) {
+        if (str[i] == ' ')
+            lastSpace = i;
+    }
+
+    // Print initials (excluding surname)
+    if (str[0] != ' ')
+        printf("%c.", toupper(str[0]));
+
+    for (i = 1; i < lastSpace; i++) {
+        if (str[i] == ' ' && str[i + 1] != ' ')
+            printf("%c.", toupper(str[i + 1]));
+    }
+
+    // Print space and surname in full
+    if (lastSpace != -1)
+        printf(" %s\n", &str[lastSpace + 1]);
+    else
+        printf("\n"); // single name case
+
+    return 0;
+}
+
+//Q99: Change the date format from dd/04/yyyy to dd-Apr-yyyy.
+
+/*
+Sample Test Cases:
+Input 1:
+15/04/2025
+Output 1:
+15-Apr-2025
+
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int day, month, year;
+    char months[][4] = {
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    };
+
+    // Input date in dd/mm/yyyy format
+    scanf("%d/%d/%d", &day, &month, &year);
+
+    // Validate month
+    if (month < 1 || month > 12) {
+        printf("Invalid month\n");
+        return 0;
+    }
+
+    // Print in desired format
+    printf("%02d-%s-%d\n", day, months[month - 1], year);
+
+    return 0;
+}
+
+//Q100: Print all sub-strings of a string.
+
+/*
+Sample Test Cases:
+Input 1:
+abc
+Output 1:
+a,ab,abc,b,bc,c
+
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[1000];
+    int len, i, j, k;
+    int first = 1; // for proper comma formatting
+
+    // Input string
+    fgets(str, sizeof(str), stdin);
+
+    // Remove newline character if present
+    len = strlen(str);
+    if (str[len - 1] == '\n')
+        str[len - 1] = '\0';
+
+    len = strlen(str);
+
+    // Generate and print all substrings
+    for (i = 0; i < len; i++) {
+        for (j = i; j < len; j++) {
+            if (!first)
+                printf(",");
+            first = 0;
+            for (k = i; k <= j; k++)
+                printf("%c", str[k]);
+        }
+    }
+
+    printf("\n");
+    return 0;
+}
+
+/*Q101: Write a Program to take a sorted array(say nums[]) and an integer (say target) as inputs. The elements in the sorted array might be repeated. You need to print the first and last occurrence of the target and print the index of first and last occurrence. Print -1, -1 if the target is not present.
+
+
+Sample Test Cases:
+Input 1:
+nums = [5,7,7,8,8,10], target = 8
+Output 1:
+3,4
+
+Input 2:
+ nums = [5,7,7,8,8,10], target = 6
+Output 2:
+-1,-1
+
+Input 3:
+ nums = [5,7,7,8,8,10], target = 10
+Output 3:
+5,5
+
+*/
+#include <stdio.h>
+
+int main() {
+    int nums[100], n, target;
+    int i, first = -1, last = -1;
+    
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+ 
+    printf("Enter %d sorted elements: ", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &nums[i]);
+    }
+    
+  
+    printf("Enter target value: ");
+    scanf("%d", &target);
+    
+
+    for(i = 0; i < n; i++) {
+        if(nums[i] == target) {
+            first = i;
+            break;
+        }
+    }
+    
+  
+    for(i = n - 1; i >= 0; i--) {
+        if(nums[i] == target) {
+            last = i;
+            break;
+        }
+    }
+    
+    
+    printf("%d,%d\n", first, last);
+    
+    return 0;
+}
+
+/*Q102: Write a Program to take a sorted array arr[] and an integer x as input, find the index (0-based) of the smallest element in arr[] that is greater than or equal to x and print it. This element is called the ceil of x. If such an element does not exist, print -1. Note: In case of multiple occurrences of ceil of x, return the index of the first occurrence.
+
+Sample Test Cases:
+Input 1:
+arr = [1, 2, 8, 10, 11, 12, 19], x = 5
+Output 1:
+2
+
+Input 2:
+arr = [1, 2, 8, 10, 11, 12, 19], x = 20
+Output 2:
+-1
+
+Input 3:
+arr = [1, 1, 2, 8, 10, 11, 12, 19], x = 0
+Output 3:
+0
+
+Input 4:
+arr = [1, 1, 2, 8, 10, 11, 12, 19], x = 2
+Output 4:
+2
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, x, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d sorted elements: ", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter value of x: ");
+    scanf("%d", &x);
+
+    // Find the ceil of x
+    int ceilIndex = -1;
+    for(i = 0; i < n; i++) {
+        if(arr[i] >= x) {
+            ceilIndex = i;
+            break;
+        }
+    }
+
+    printf("Ceil of %d is at index: %d\n", x, ceilIndex);
+    return 0;
+}
+
+/*Q103: Write a Program to take an array of integers as input, calculate the pivot index of this array. The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right. If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array. Print the leftmost pivot index. If no such index exists, print -1.
+
+Sample Test Cases:
+Input 1:
+nums = [1,7,3,6,5,6]
+Output 1:
+3
+
+Input 2:
+nums = [1,2,3]
+Output 2:
+-1
+
+Input 3:
+nums = [2,1,-1]
+Output 3:
+0
+
+*/
+#include <stdio.h>
+
+int main() {
+    int nums[100], n, i, leftSum, rightSum;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements: ", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &nums[i]);
+    }
+
+
+    for(i = 0; i < n; i++) {
+        leftSum = 0;
+        rightSum = 0;
+
+    
+        for(int j = 0; j < i; j++) {
+            leftSum += nums[j];
+        }
+
+        
+        for(int j = i + 1; j < n; j++) {
+            rightSum += nums[j];
+        }
+
+        if(leftSum == rightSum) {
+            printf("Pivot index found at: %d\n", i);
+            return 0;
+        }
+    }
+
+    printf("No pivot index found\n");
+    return -1;
+}
+
+/*Q104: Write a Program to take a positive integer n as input, and find the pivot integer x such that the sum of all elements between 1 and x inclusively equals the sum of all elements between x and n inclusively. Print the pivot integer x. If no such integer exists, print -1. Assume that it is guaranteed that there will be at most one pivot integer for the given input.
+
+
+Sample Test Cases:
+Input 1:
+n = 8
+Output 1:
+6
+
+Input 2:
+n = 1
+Output 2:
+1
+
+Input 3:
+n = 4
+Output 3:
+-1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, x;
+    printf("Enter a positive integer n: ");
+    scanf("%d", &n);
+
+    
+    for(x = 1; x <= n; x++) {
+        int leftSum = (x * (x + 1)) / 2;  
+        int rightSum = (n * (n + 1)) / 2 - leftSum + x;  
+        if(leftSum == rightSum) {
+            printf("Pivot integer found: %d\n", x);
+            return 0;
+        }
+    }
+
+    printf("No pivot integer found\n");
+    return -1;
+}   
+
+/*Q105: Write a program to take an integer array nums of size n, and print the majority element. The majority element is the element that appears strictly more than ⌊n / 2⌋ times. Print -1 if no such element exists. Note: Majority Element is not necessarily the element that is present most number of times.
+
+Sample Test Cases:
+Input 1:
+nums = [3,2,3]
+Output 1:
+3
+
+Input 2:
+nums = [2,2,1,1,1,2,2]
+Output 2:
+2
+
+Input 3:
+nums = [2,2,1,1,1,2,2,3]
+Output 3:
+-1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int nums[100], n, i, count, majorityElement;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements: ", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &nums[i]);
+    }
+
+    majorityElement = -1;
+    for(i = 0; i < n; i++) {
+        count = 0;
+        for(int j = 0; j < n; j++) {
+            if(nums[j] == nums[i]) {
+                count++;
+            }
+        }
+        if(count > n / 2) {
+            majorityElement = nums[i];
+            break;
+        }
+    }
+
+    printf("Majority element is: %d\n", majorityElement);
+    return 0;
+}   
+
+/*Q106: Write a program to take an array arr[] of integers as input, the task is to find the next greater element for each element of the array in order of their appearance in the array. Next greater element of an element in the array is the nearest element on the right which is greater than the current element. If there does not exist next greater of current element, then next greater element for current element is -1.
+
+N.B:
+- Print the output for each element in a comma separated fashion.
+- Do not use Stack, use brute force approach (nested loop) to solve.
+
+Sample Test Cases:
+Input 1:
+arr = [1, 3, 2, 4]
+Output 1:
+3, 4, 4, -1
+
+Input 2:
+arr = [6, 8, 0, 1, 3]
+Output 2:
+8, -1, 1, 3, -1
+
+Input 3:
+arr = [1, 2, 3, 5]
+Output 3:
+2, 3, 5, -1
+
+Input 4:
+arr = [5, 4, 3, 1]
+Output 4:
+-1, -1, -1, -1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, j, nextGreater;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements: ", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for(i = 0; i < n; i++) {
+        nextGreater = -1;
+        for(j = i + 1; j < n; j++) {
+            if(arr[j] > arr[i]) {
+                nextGreater = arr[j];
+                break;
+            }
+        }
+        printf("%d", nextGreater);
+        if(i < n - 1) {
+            printf(", ");
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+/*Q107: Write a program to take an array arr[] of integers as input, the task is to find the previous greater element for each element of the array in order of their appearance in the array. Previous greater element of an element in the array is the nearest element on the left which is greater than the current element. If there does not exist next greater of current element, then previous greater element for current element is -1.
+
+N.B:
+- Print the output for each element in a comma separated fashion.
+- Do not use Stack, use brute force approach (nested loop) to solve.
+
+
+Sample Test Cases:
+Input 1:
+arr = [1, 3, 2, 4]
+Output 1:
+-1, -1, 3, -1
+
+Input 2:
+arr = [6, 8, 0, 1, 3]
+Output 2:
+-1, -1, 8, 8, 8
+
+Input 3:
+arr = [1, 2, 3, 5]
+Output 3:
+-1, -1, -1, -1
+
+Input 4:
+arr = [5, 4, 3, 1]
+Output 4:
+-1, 5, 4, 3
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, j, prevGreater;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements: ", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for(i = 0; i < n; i++) {
+        prevGreater = -1;
+        for(j = i - 1; j >= 0; j--) {
+            if(arr[j] > arr[i]) {
+                prevGreater = arr[j];
+                break;
+            }
+        }
+        printf("%d", prevGreater);
+        if(i < n - 1) {
+            printf(", ");
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+/*Q108: Write a Program to take an integer array nums. Print an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+Sample Test Cases:
+Input 1:
+nums = [1,2,3,4]
+Output 1:
+[24,12,8,6]
+
+Input 2:
+nums = [-1,1,0,-3,3]
+Output 2:
+[0,0,9,0,0]
+
+*/
+#include <stdio.h>
+
+int main() {
+    int nums[100], n, i;
+    int answer[100] = {0};
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements: ", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &nums[i]);
+    }
+
+   //Calculating all the elements except self...
+    for(i = 0; i < n; i++) {
+        int product = 1;
+        for(int j = 0; j < n; j++) {
+            if(i != j) {
+                product *= nums[j];
+            }
+        }
+        answer[i] = product;
+    }
+
+    printf("Output: [");
+    for(i = 0; i < n; i++) {
+        printf("%d", answer[i]);
+        if(i < n - 1) {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+
+    return 0;
+}   
+
+/*Q109: Write a program to take an integer array arr and an integer k as inputs. Print the maximum sum of all the subarrays of size k.
+
+
+Sample Test Cases:
+Input 1:
+arr[100, 200, 300, 400] = , k = 2
+Output 1:
+700
+
+Input 2:
+arr[1, 4, 2, 10, 23, 3, 1, 0, 20] = , k = 4
+Output 2:
+39
+
+Input 3:
+arr[100, 200, 300, 400] = , k = 1
+Output 3:
+400
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, k;
+    int i, sum = 0, maxSum = 0;
+
+    printf("Enter number of elements in array: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter value of k: ");
+    scanf("%d", &k);
+
+    if (k > n) {
+        printf("Invalid! k cannot be greater than array size.\n");
+        return 0;
+    }
+
+    for (i = 0; i < k; i++) {
+        sum += arr[i];
+    }
+    maxSum = sum;
+
+    for (i = k; i < n; i++) {
+        sum = sum - arr[i - k] + arr[i]; 
+        if (sum > maxSum) {
+            maxSum = sum;
+        }
+    }
+
+    printf("Maximum sum of subarray of size %d = %d\n", k, maxSum);
+
+    return 0;
+}
+
+/*Q110: Write a program to take an integer array arr and an integer k as inputs. The task is to find the maximum element in each subarray of size k moving from left to right. Print the maximum elements for each window separated by spaces as output.
+
+
+Sample Test Cases:
+Input 1:
+arr[1, 2, 3, 1, 4, 5, 2, 3, 6] = , k = 3
+Output 1:
+3 3 4 5 5 5 6
+
+Input 2:
+arr[5, 1, 3, 4, 2] = , k = 1
+Output 2:
+5 1 3 4 2
+
+*/
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, k;
+    int i, j, max;
+
+    printf("Enter number of elements in array: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter value of k: ");
+    scanf("%d", &k);
+
+    if (k > n) {
+        printf("Invalid! k cannot be greater than array size.\n");
+        return 0;
+    }
+
+    for (i = 0; i <= n - k; i++) {
+        max = arr[i]; 
+
+        for (j = i + 1; j < i + k; j++) {
+            if (arr[j] > max) {
+                max = arr[j];
+            }
+        }
+        printf("%d ", max);
+    }
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    int n, k;
+    scanf("%d", &n);
+    
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    scanf("%d", &k);
+    for (int i = 0; i <= n - k; i++) {
+        int firstNegative = 0;
+        for (int j = i; j < i + k; j++) {
+            if (arr[j] < 0) {
+                firstNegative = arr[j];
+                break;
+            }
+        }
+        if (i == 0) {
+            printf("%d", firstNegative);
+        } else {
+            printf(" %d", firstNegative);
+        }
+    }
+    
+    printf("\n");
+    
+    return 0;
+}
+

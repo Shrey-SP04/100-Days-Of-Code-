@@ -1,0 +1,727 @@
+//🔀Q11 (Conditional Statements)
+//Write a program to input an integer and check whether it is even or odd using if–else.
+
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    if (num % 2 == 0) {
+        printf("%d is even.\n", num);
+    } else {
+        printf("%d is odd.\n", num);
+    }
+
+    return 0;
+}
+
+//🔀Q12 (Conditional Statements)
+//Write a program to input an integer and check whether it is positive, negative or zero using nested if–else
+
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    if (num > 0) {
+        printf("%d is positive.\n", num);
+    } else if (num < 0) {
+        printf("%d is negative.\n", num);
+    } else {
+        printf("%d is zero.\n", num);
+    }
+
+    return 0;
+}
+
+//🔀Q13 (Conditional Statements)
+//Write a program to input a year and check whether it is a leap year or not using conditional statements.
+
+#include <stdio.h>
+
+int main() {
+    int year;
+    printf("Enter a year: ");
+    scanf("%d", &year);
+
+    if ((year % 4 == 0 && year % 100 != 0) && (year % 400 == 0)) {
+        printf("%d is a leap year.\n", year);
+    } else {
+        printf("%d is not a leap year.\n", year);
+    }
+
+    return 0;
+}
+
+//🔀Q14 (Conditional Statements)
+//Write a program to input a character and check whether it is a vowel or consonant using if–else.
+
+#include <stdio.h>
+
+int main() {
+    char ch;
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+
+    if (ch == 'a' && ch == 'e' && ch == 'i' && ch == 'o' && ch == 'u' &&
+        ch == 'A' && ch == 'E' && ch == 'I' && ch == 'O' && ch == 'U') {
+        printf("%c is a vowel.\n", ch);
+    } else {
+        printf("%c is a consonant.\n", ch);
+    }
+
+    return 0;
+}
+
+//🔀Q14 (Conditional Statements)
+//Write a program to input a character and check whether it is a vowel or consonant using if–else.
+
+#include <stdio.h>
+
+int main() {
+    char ch;
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+
+    if (ch == 'a' && ch == 'e' && ch == 'i' && ch == 'o' && ch == 'u' &&
+        ch == 'A' && ch == 'E' && ch == 'I' && ch == 'O' && ch == 'U') {
+        printf("%c is a vowel.\n", ch);
+    } else {
+        printf("%c is a consonant.\n", ch);
+    }
+
+    return 0;
+}
+
+//🔀Q16 (Conditional Statements)
+//Write a program to input three numbers and find the largest among them using if–else.
+
+#include <stdio.h>
+
+int main() {
+    int num1, num2, num3;
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &num1, &num2, &num3);
+
+    if (num1 >= num2 && num1 >= num3) {
+        printf("%d is the largest number.\n", num1);
+    } else if (num2 >= num1 && num2 >= num3) {
+        printf("%d is the largest number.\n", num2);
+    } else {
+        printf("%d is the largest number.\n", num3);
+    }
+
+    return 0;
+}
+
+//🔀Q17 (Conditional Statements)
+//Write a program to find the roots of a quadratic equation and categorize them.
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float a, b, c, discriminant, root1, root2;
+
+    // Input coefficients
+    printf("Enter coefficients a, b and c: ");
+    scanf("%f %f %f", &a, &b, &c);
+
+    // Calculate discriminant
+    discriminant = b * b - 4 * a * c;
+
+    // Find roots based on discriminant
+    if (discriminant > 0) {
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("Roots are real and different.\n");
+        printf("Root 1 = %.2f\n", root1);
+        printf("Root 2 = %.2f\n", root2);
+    } else if (discriminant == 0) {
+        root1 = root2 = -b / (2 * a);
+        printf("Roots are real and the same.\n");
+        printf("Root 1 = Root 2 = %.2f\n", root1);
+    } else {
+        float realPart = -b / (2 * a);
+        float imaginaryPart = sqrt(-discriminant) / (2 * a);
+        printf("Roots are complex and different.\n");
+        printf("Root 1 = %.2f + %.2fi\n", realPart, imaginaryPart);
+        printf("Root 2 = %.2f - %.2fi\n", realPart, imaginaryPart);
+    }
+
+    return 0;
+}
+
+//🔀Q18 (Conditional Statements)
+//Write a program to assign grades based on a percentage input.
+
+#include <stdio.h>
+
+int main() {
+    float percentage;
+    char grade;
+
+    // Input percentage
+    printf("Enter percentage: ");
+    scanf("%f", &percentage);
+
+    // Determine grade
+    if (percentage >= 90) {
+        grade = 'A';
+    } else if (percentage >= 80) {
+        grade = 'B';
+    } else if (percentage >= 70) {
+        grade = 'C';
+    } else if (percentage >= 60) {
+        grade = 'D';
+    } else {
+        grade = 'F';
+    }
+
+    // Output grade
+    printf("Grade: %c\n", grade);
+
+    return 0;
+}
+
+//Q19: Write a program to classify a triangle as Equilateral, Isosceles, or Scalene based on its side lengths.
+
+/*
+Sample Test Cases:
+Input 1:
+3 3 3
+Output 1:
+Equilateral
+
+Input 2:
+3 3 4
+Output 2:
+Isosceles
+
+Input 3:
+2 3 4
+Output 3:
+Scalene
+
+*/
+#include <stdio.h>
+
+int main() {
+    int side1, side2, side3;
+
+    // Prompt the user to enter the side lengths
+    printf("Enter the lengths of the three sides of the triangle:\n");
+    scanf("%d %d %d", &side1, &side2, &side3);
+
+    // Check for triangle validity (optional, but good practice)
+    if (side1 + side2 <= side3 || side1 + side3 <= side2 || side2 + side3 <= side1) {
+        printf("The given side lengths do not form a valid triangle.\n");
+    } else {
+        // Classify the triangle
+        if (side1 == side2 && side2 == side3) {
+            printf("The triangle is Equilateral.\n");
+        } else if (side1 == side2 || side2 == side3 || side1 == side3) {
+            printf("The triangle is Isosceles.\n");
+        } else {
+            printf("The triangle is Scalene.\n");
+        }
+    }
+
+    return 0;
+}
+
+//Q20: Write a program to display the day of the week based on a number (1–7) using switch-case.
+
+/*
+Sample Test Cases:
+Input 1:
+1
+Output 1:
+Monday
+
+Input 2:
+5
+Output 2:
+Friday
+
+*/
+#include <stdio.h>
+
+int main() {
+    int dayNumber;
+
+    // Prompt the user to enter a number
+    printf("Enter a number (1-7) to determine the day of the week: ");
+    scanf("%d", &dayNumber);
+
+    // Use a switch-case statement to display the corresponding day
+    switch (dayNumber) {
+        case 1:
+            printf("Sunday\n");
+            break;
+        case 2:
+            printf("Monday\n");
+            break;
+        case 3:
+            printf("Tuesday\n");
+            break;
+        case 4:
+            printf("Wednesday\n");
+            break;
+        case 5:
+            printf("Thursday\n");
+            break;
+        case 6:
+            printf("Friday\n");
+            break;
+        case 7:
+            printf("Saturday\n");
+            break;
+        default:
+            printf("Invalid input. Please enter a number between 1 and 7.\n");
+    }
+
+    return 0;
+}
+
+//Q21: Write a program to display the month name and number of days using switch-case for a given month number.
+
+/*
+Sample Test Cases:
+Input 1:
+2
+Output 1:
+February, 28 days
+
+Input 2:
+12
+Output 2:
+December, 31 days
+
+*/
+#include <stdio.h>
+
+int main() {
+    int month;
+
+    // Prompt the user to enter a month number
+    printf("Enter a month number (1-12): ");
+    scanf("%d", &month);
+
+    // Use a switch-case statement to display the corresponding month and days
+    switch (month) {
+        case 1:
+            printf("January, 31 days\n");
+            break;
+        case 2:
+            printf("February, 28 days\n");
+            break;
+        case 3:
+            printf("March, 31 days\n");
+            break;
+        case 4:
+            printf("April, 30 days\n");
+            break;
+        case 5:
+            printf("May, 31 days\n");
+            break;
+        case 6:
+            printf("June, 30 days\n");
+            break;
+        case 7:
+            printf("July, 31 days\n");
+            break;
+        case 8:
+            printf("August, 31 days\n");
+            break;
+        case 9:
+            printf("September, 30 days\n");
+            break;
+        case 10:
+            printf("October, 31 days\n");
+            break;
+        case 11:
+            printf("November, 30 days\n");
+            break;
+        case 12:
+            printf("December, 31 days\n");
+            break;
+        default:
+            printf("Invalid month number. Please enter a number between 1 and 12.\n");
+    }
+
+    return 0;
+}
+
+//Q22: Write a program to find profit or loss percentage given cost price and selling price.
+
+/*
+Sample Test Cases:
+Input 1:
+1000 1200
+Output 1:
+Profit 20%
+
+Input 2:
+1000 800
+Output 2:
+Loss 20%
+
+Input 3:
+1000 1000
+Output 3:
+No Profit No Loss
+
+*/
+
+#include <stdio.h>
+
+int main() {
+    float costPrice, sellingPrice, profitLoss;
+
+    // Input cost price and selling price
+    printf("Enter cost price and selling price: ");
+    scanf("%f %f", &costPrice, &sellingPrice);
+
+    // Calculate profit or loss
+    profitLoss = sellingPrice - costPrice;
+
+    // Determine profit or loss percentage
+    if (profitLoss > 0) {
+        printf("Profit %.2f%%\n", (profitLoss / costPrice) * 100);
+    } else if (profitLoss < 0) {
+        printf("Loss %.2f%%\n", (-profitLoss / costPrice) * 100);
+    } else {
+        printf("No Profit No Loss\n");
+    }
+
+    return 0;
+}
+
+// Q23: Write a program to calculate a library fine based on late days.
+
+/*
+Sample Test Cases:
+Input 1:
+4
+Output 1:
+Fine ₹8
+
+Input 2:
+8
+Output 2:
+Fine ₹32
+
+Input 3:
+15
+Output 3:
+Fine ₹90
+
+Input 4:
+31
+Output 4:
+Membership Cancelled
+
+*/
+
+#include <stdio.h>
+
+int main() {
+    int late_days;
+    printf("Enter the number of late days: ");
+    scanf("%d", &late_days);
+
+    if (late_days > 0 && late_days <= 30) {
+        int fine = late_days * 2;
+        printf("Fine ₹%d\n", fine);
+    } else if (late_days > 30) {
+        printf("Membership Cancelled\n");
+    } else {
+        printf("Invalid input\n");
+    }
+
+    return 0;
+}
+
+// Q24: Write a program to calculate an electricity bill based on units consumed.
+
+#include <stdio.h>
+
+int main() {
+    int units;
+    printf("Enter the number of units consumed: ");
+    scanf("%d", &units);
+
+    float bill;
+    if (units <= 100) {
+        bill = units * 5;
+    } else if (units <= 200) {
+        bill = 100 * 5 + (units - 100) * 7;
+    } else {
+        bill = 100 * 5 + 100 * 7 + (units - 200) * 10;
+    }
+
+    printf("Bill: ₹%.2f\n", bill);
+    return 0;
+}
+
+// Q25: Write a program to implement a basic calculator using switch-case for +, -, *, /, %.
+
+/*
+Sample Test Cases:
+Input 1:
+4 2 +
+Output 1:
+6
+
+Input 2:
+10 3 %
+Output 2:
+1
+
+Input 3:
+15 5 /
+Output 3:
+3
+
+*/
+
+#include <stdio.h>
+
+int main() {
+    int num1, num2;
+    char operator;
+
+    // Input
+    scanf("%d %d %c", &num1, &num2, &operator);
+
+    // Switch-case for basic calculator
+    switch (operator) {
+        case '+':
+            printf("%d\n", num1 + num2);
+            break;
+        case '-':
+            printf("%d\n", num1 - num2);
+            break;
+        case '*':
+            printf("%d\n", num1 * num2);
+            break;
+        case '/':
+            if (num2 != 0) {
+                printf("%d\n", num1 / num2);
+            } else {
+                printf("Division by zero error\n");
+            }
+            break;
+        case '%':
+            if (num2 != 0) {
+                printf("%d\n", num1 % num2);
+            } else {
+                printf("Division by zero error\n");
+            }
+            break;
+        default:
+            printf("Invalid operator\n");
+    }
+
+    return 0;
+}
+
+//Q26: Write a program to print numbers from 1 to n.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+Output 1:
+1 2 3 4 5
+
+Input 2:
+3
+Output 2:
+1 2 3
+
+*/
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return 0;
+}
+
+// Q27: Write a program to print the sum of the first n odd numbers.
+
+#include <stdio.h>
+
+
+
+/*
+Sample Test Cases:
+Input 1:
+3
+Output 1:
+9
+
+Input 2:
+5
+Output 2:
+25
+
+*/
+int main() {
+    int n, sum = 0;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        sum += 2 * i - 1;
+    }
+
+    printf("The sum of the first %d odd numbers is: %d\n", n, sum);
+    return 0;
+}
+
+//Q28: Write a program to print the product of even numbers from 1 to n.
+
+/*
+Sample Test Cases:
+Input 1:
+4
+Output 1:
+8 (2 * 4)
+
+Input 2:
+6
+Output 2:
+48 (2 * 4 * 6)
+
+*/
+int main() {
+    int n, product = 1;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    for (int i = 2; i <= n; i += 2) {
+        product *= i;
+    }
+
+    printf("The product of even numbers from 1 to %d is: %d\n", n, product);
+    return 0;
+}
+
+//Q29: Write a program to calculate the factorial of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+Output 1:
+120
+
+Input 2:
+3
+Output 2:
+6
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n;
+    unsigned long long factorial = 1;
+
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        factorial *= i;
+    }
+
+    printf("The factorial of %d is: %llu\n", n, factorial);
+    return 0;
+}
+
+//Q30: Write a program to reverse a given number. 
+
+/*
+Sample Test Cases:
+Input 1:
+1234
+Output 1:
+4321
+
+Input 2:
+100
+Output 2:
+1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int number, reverse = 0, remainder;
+
+    printf("Enter an integer: ");
+    scanf("%d", &number);
+
+    // Store the original number to print it later
+    int originalNumber = number;
+
+    while(number != 0) {
+        // Get the last digit
+        remainder = number % 10;
+
+        // Append the last digit to the reverse number
+        reverse = reverse * 10 + remainder;
+
+        // Remove the last digit from the original number
+        number /= 10;
+    }
+
+    printf("Reversed Number: %d\n", reverse);
+
+    return 0;
+}
+
+//Q31: Write a program to take a number as input and print its equivalent binary representation.
+
+/*
+Sample Test Cases:
+Input 1:
+10
+Output 1:
+1010
+
+Input 2:
+7
+Output 2:
+111
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    printf("Binary representation: ");
+    for (int i = 31; i >= 0; i--) {
+        int bit = (num >> i) & 1;
+        printf("%d", bit);
+    }
+    printf("\n");
+
+    return 0;
+}
+

@@ -1,0 +1,712 @@
+//Q32: Write a program to check if a number is a palindrome.
+
+/*
+Sample Test Cases:
+Input 1:
+121
+Output 1:
+Palindrome
+
+Input 2:
+123
+Output 2:
+Not palindrome
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num, reversed = 0, original;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    original = num;
+    while (num > 0) {
+        int digit = num % 10;
+        reversed = reversed * 10 + digit;
+        num /= 10;
+    }
+
+    if (original == reversed) {
+        printf("Palindrome\n");
+    } else {
+        printf("Not palindrome\n");
+    }
+
+    return 0;
+}
+
+//Q33: Write a program to check if a number is an Armstrong number.
+
+/*
+Sample Test Cases:
+Input 1:
+153
+Output 1:
+Armstrong
+
+Input 2:
+123
+Output 2:
+Not Armstrong
+
+*/
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int num, original, remainder, result = 0, n = 0;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    original = num;
+
+    // Find the number of digits
+    while (original != 0) {
+        original /= 10;
+        n++;
+    }
+
+    original = num;
+
+    // Calculate the sum of the nth powers of the digits
+    while (original != 0) {
+        remainder = original % 10;
+        result += pow(remainder, n);
+        original /= 10;
+    }
+
+    if (result == num) {
+        printf("Armstrong\n");
+    } else {
+        printf("Not Armstrong\n");
+    }
+
+    return 0;
+}
+
+//Q34: Write a program to check if a number is prime.
+
+/*
+Sample Test Cases:
+Input 1:
+7
+Output 1:
+Prime
+
+Input 2:
+10
+Output 2:
+Not prime
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num, isPrime = 1;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (num <= 1) {
+        isPrime = 0;
+    } else {
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+    }
+
+    if (isPrime) {
+        printf("Prime\n");
+    } else {
+        printf("Not prime\n");
+    }
+
+    return 0;
+}
+
+//Q35: Write a program to print all factors of a given number.
+
+/*
+Sample Test Cases:
+Input 1:
+6
+Output 1:
+1 2 3 6
+
+Input 2:
+10
+Output 2:
+1 2 5 10
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    printf("Factors of %d are: ", num);
+    for (int i = 1; i <= num; i++) {
+        if (num % i == 0) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
+
+//Q36: Write a program to find the HCF (GCD) of two numbers.
+
+/*
+Sample Test Cases:
+Input 1:
+12 18
+Output 1:
+6
+
+Input 2:
+7 9
+Output 2:
+1
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num1, num2, gcd;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    for (int i = 1; i <= num1 && i <= num2; i++) {
+        if (num1 % i == 0 && num2 % i == 0) {
+            gcd = i;
+        }
+    }
+
+    printf("HCF (GCD) of %d and %d is: %d\n", num1, num2, gcd);
+
+    return 0;
+}
+
+//Q37: Write a program to find the LCM of two numbers.
+
+/*
+Sample Test Cases:
+Input 1:
+4 5
+Output 1:
+20
+
+Input 2:
+7 3
+Output 2:
+21
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num1, num2, lcm;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Find the LCM using the GCD
+    int gcd;
+    for (int i = 1; i <= num1 && i <= num2; i++) {
+        if (num1 % i == 0 && num2 % i == 0) {
+            gcd = i;
+        }
+    }
+    lcm = (num1 * num2) / gcd;
+
+    printf("LCM of %d and %d is: %d\n", num1, num2, lcm);
+
+    return 0;
+}
+
+//Q38: Write a program to find the sum of digits of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+123
+Output 1:
+6
+
+Input 2:
+999
+Output 2:
+27
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num, sum = 0;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    while (num != 0) {
+        sum += num % 10;
+        num /= 10;
+    }
+
+    printf("Sum of digits is: %d\n", sum);
+
+    return 0;
+}
+
+//Q39: Write a program to find the product of odd digits of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+12345
+Output 1:
+15 (1*3*5)
+
+Input 2:
+2468
+Output 2:
+1 (no odd digits, assume 1)
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num, product = 1;
+    int hasOddDigit = 0;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    while (num != 0) {
+        int digit = num % 10;
+        if (digit % 2 != 0) {
+            product *= digit;
+            hasOddDigit = 1;
+        }
+        num /= 10;
+    }
+
+    if (!hasOddDigit) {
+        product = 1;
+    }
+
+    printf("Product of odd digits is: %d\n", product);
+
+    return 0;
+}
+
+//Q40: Write a program to find the 1’s complement of a binary number and print it.
+
+/*
+Sample Test Cases:
+Input 1:
+1010
+Output 1:
+0101
+
+Input 2:
+1111
+Output 2:
+0000
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter a binary number: ");
+    scanf("%d", &num);
+
+    int complement = 0;
+    int place = 1;
+
+    while (num != 0) {
+        int bit = num % 10;
+        complement += (1 - bit) * place;
+        num /= 10;
+        place *= 10;
+    }
+
+    printf("1's complement is: %d\n", complement);
+
+    return 0;
+}
+
+//Q41: Write a program to swap the first and last digit of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+1234
+Output 1:
+4231
+
+Input 2:
+1001
+Output 2:
+1001
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    int firstDigit, lastDigit, digits = 0, temp = num;
+
+    // Find the last digit
+    lastDigit = num % 10;
+
+    // Find the first digit and count the number of digits
+    while (temp != 0) {
+        firstDigit = temp % 10;
+        temp /= 10;
+        digits++;
+    }
+
+    // Remove the first digit from the original number
+    num = num - (firstDigit * pow(10, digits - 1));
+
+    // Add the last digit to the front
+    num = (lastDigit * pow(10, digits - 1)) + num;
+
+    printf("Number after swapping first and last digit: %d\n", num);
+
+    return 0;
+}
+
+//Q41: Write a program to swap the first and last digit of a number.
+
+/*
+Sample Test Cases:
+Input 1:
+1234
+Output 1:
+4231
+
+Input 2:
+1001
+Output 2:
+1001
+
+*/
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    int firstDigit, lastDigit, digits = 0, temp = num;
+
+    // Find the last digit
+    lastDigit = num % 10;
+
+    // Find the first digit and count the number of digits
+    while (temp != 0) {
+        firstDigit = temp % 10;
+        temp /= 10;
+        digits++;
+    }
+
+    // Remove the first digit from the original number
+    num = num - (firstDigit * pow(10, digits - 1));
+
+    // Add the last digit to the front
+    num = (lastDigit * pow(10, digits - 1)) + num;
+
+    printf("Number after swapping first and last digit: %d\n", num);
+
+    return 0;
+}
+
+//Q43: Write a program to check if a number is a strong number.
+
+/*
+Sample Test Cases:
+Input 1:
+145
+Output 1:
+Strong number
+
+Input 2:
+123
+Output 2:
+Not strong number
+
+*/
+#include <stdio.h>
+
+// Function to calculate the factorial of a number
+long long factorial(int n) {
+    long long fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+// Function to check if a number is a strong number
+int isStrongNumber(int num) {
+    int originalNum = num;
+    long long sumOfFactorials = 0;
+    int digit;
+
+    // Handle the case of 0 separately as 0! is 1
+    if (num == 0) {
+        return (factorial(0) == 0); // 0 is not a strong number
+    }
+
+    while (num > 0) {
+        digit = num % 10; // Extract the last digit
+        sumOfFactorials += factorial(digit); // Add the factorial of the digit to the sum
+        num /= 10; // Remove the last digit
+    }
+
+    return (sumOfFactorials == originalNum); // Return true if the sum equals the original number
+}
+
+int main() {
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    if (isStrongNumber(number)) {
+        printf("%d is a Strong number.\n", number);
+    } else {
+        printf("%d is not a Strong number.\n", number);
+    }
+
+    return 0;
+}
+
+//Q43: Write a program to check if a number is a strong number.
+
+/*
+Sample Test Cases:
+Input 1:
+145
+Output 1:
+Strong number
+
+Input 2:
+123
+Output 2:
+Not strong number
+
+*/
+#include <stdio.h>
+
+// Function to calculate the factorial of a number
+long long factorial(int n) {
+    long long fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+// Function to check if a number is a strong number
+int isStrongNumber(int num) {
+    int originalNum = num;
+    long long sumOfFactorials = 0;
+    int digit;
+
+    // Handle the case of 0 separately as 0! is 1
+    if (num == 0) {
+        return (factorial(0) == 0); // 0 is not a strong number
+    }
+
+    while (num > 0) {
+        digit = num % 10; // Extract the last digit
+        sumOfFactorials += factorial(digit); // Add the factorial of the digit to the sum
+        num /= 10; // Remove the last digit
+    }
+
+    return (sumOfFactorials == originalNum); // Return true if the sum equals the original number
+}
+
+int main() {
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    if (isStrongNumber(number)) {
+        printf("%d is a Strong number.\n", number);
+    } else {
+        printf("%d is not a Strong number.\n", number);
+    }
+
+    return 0;
+}
+
+//Q45: Write a program to find the sum of the series: 2/3 + 4/7 + 6/11 + 8/15 + ... up to n terms.
+
+/*
+Sample Test Cases:
+Input 1:
+3
+Output 1:
+Approximate sum: 1.56
+
+Input 2:
+5
+Output 2:
+Approximate sum: 2.22
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n;
+    float sum = 0.0;
+
+    printf("Enter the number of terms (n): ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        sum += (float)(2 * i) / (3 + 4 * (i - 1));
+    }
+
+    printf("Approximate sum: %.2f\n", sum);
+
+    return 0;
+}
+
+//Q46: Write a program to print the following pattern:
+
+
+/*
+Sample Test Cases:
+Input 1:
+
+Output 1:
+*****
+*****
+*****
+*****
+*****
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    // Outer loop for 5 rows
+    for (i = 1; i <= 5; i++) {
+        // Inner loop for 5 columns
+        for (j = 1; j <= 5; j++) {
+            printf("*");
+        }
+        printf("\n"); // Move to next line after each row
+    }
+    return 0;
+}
+
+//Q47: Write a program to print the following pattern:
+/*
+*
+**
+***
+****
+*****
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    // Outer loop for rows
+    for (i = 1; i <= 5; i++) {
+        // Inner loop for printing stars in each row
+        for (j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n"); // Move to next line after each row
+    }
+    return 0;
+}
+
+/*Q48: Write a program to print the following pattern:
+1
+12
+123
+1234
+12345
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    // Outer loop for rows
+    for (i = 1; i <= 5; i++) {
+        // Inner loop for numbers in each row
+        for (j = 1; j <= i; j++) {
+            printf("%d", j);
+        }
+        printf("\n"); // Move to next line after each row
+    }
+    return 0;
+}
+
+/*Q49: Write a program to print the following pattern:
+5
+45
+345
+2345
+12345
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    // Outer loop for rows
+    for (i = 5; i >= 1; i--) {
+        // Inner loop to print numbers starting from i up to 5
+        for (j = i; j <= 5; j++) {
+            printf("%d", j);
+        }
+        printf("\n"); // Move to next line after each row
+    }
+    return 0;
+}
+
+/*Q50: Write a program to print the following pattern:
+*****
+ ****
+  ***
+   **
+    *
+
+*/
+#include <stdio.h>
+
+int main() {
+    int i, j, k;
+    // Outer loop for rows
+    for (i = 1; i <= 5; i++) {
+        // Print leading spaces
+        for (j = 1; j < i; j++) {
+            printf(" ");
+        }
+        // Print stars
+        for (k = i; k <= 5; k++) {
+            printf("*");
+        }
+        printf("\n"); // Move to next line
+    }
+    return 0;
+}
